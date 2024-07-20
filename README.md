@@ -1,56 +1,40 @@
-LeetCode Problem Solutions
-This repository contains solutions to various LeetCode problems, implemented in C++ and designed to demonstrate different algorithms and techniques. The solutions cover a range of problems with varying complexities and topics, including bit manipulation and more.
+# LeetCode Problem Solutions
 
-Overview
-The project is organized into individual HTML files for each problem, where you'll find:
+Welcome to the LeetCode Problem Solutions repository! This project contains solutions for various LeetCode problems, implemented in C++. The solutions are designed to cover different algorithmic challenges and are categorized based on problem type and difficulty.
 
-Problem Statement: Description of the problem and requirements.
-Examples: Sample inputs and outputs to illustrate the problem.
-Solution Code: C++ code that solves the problem.
-Explanation: A detailed explanation of the approach and solution.
-Features
-Problem Statements: Detailed descriptions of LeetCode problems.
-Example Inputs/Outputs: Clear examples to understand the problem.
-Solution Code: Well-commented C++ code for each problem.
-Solution Explanations: Insightful explanations of the algorithms used.
-Interactive Web Pages: HTML files showcasing the problems and solutions.
-Installation
-To view and run the web pages locally:
+## Project Structure
 
-Clone the Repository:
+- **`index.html`**: The homepage listing all the problems with links to their detailed pages.
+- **`post1.html`**, **`post2.html`**, **`post3.html`**, **`post4.html`**: HTML files containing problem statements, examples, and solutions.
+- **`styles.css`**: CSS file for styling the HTML pages.
+- **`script.js`**: JavaScript file for handling interactive features like theme toggling and datetime updates.
 
-bash
-Copy code
-git clone https://github.com/yourusername/leetcode-problem-solutions.git
-Navigate to the Project Directory:
+## Problems Covered
 
-bash
-Copy code
-cd leetcode-problem-solutions
-Open the HTML Files:
-Open the desired .html files in your web browser to view the problem statements and solutions.
+1. **Single Number I** (LeetCode Problem 136)
+   - **Description**: Find the single number in an array where every element appears twice except one.
+   - **Solution**: [View Solution](post1.html)
 
-Usage
-View Problem Statements:
-Navigate to the HTML files (e.g., post1.html, post2.html) in your web browser to view detailed problem statements and examples.
+2. **Single Number II** (LeetCode Problem 137)
+   - **Description**: Find the single number in an array where every element appears three times except one.
+   - **Solution**: [View Solution](post2.html)
 
-Examine Solution Code:
-Each HTML file contains the solution code and an explanation of the approach used to solve the problem.
+3. **Single Number III** (LeetCode Problem 260)
+   - **Description**: Find the two elements that appear only once in an array where every other element appears twice.
+   - **Solution**: [View Solution](post3.html)
 
-Switch Themes:
-Use the theme toggle button to switch between light and dark themes.
+4. **Sum of All Subset XOR Totals** (LeetCode Problem 1863)
+   - **Description**: Return the sum of XOR totals for every subset of an array.
+   - **Solution**: [View Solution](post4.html)
 
-Contributing
-Feel free to contribute to the repository by adding new problems, improving existing solutions, or suggesting enhancements. Please follow the guidelines for contributing:
+## Features
 
-Fork the Repository
-Create a New Branch
-Add Your Changes
-Submit a Pull Request
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- **Problem Statements**: Detailed descriptions of each problem, including examples.
+- **Solution Code**: C++ code for each problem, with comments explaining the approach.
+- **Interactive Web Pages**: HTML pages that provide a clear view of problems and solutions, with theme toggling and datetime features.
 
-Acknowledgements
-LeetCode for providing a platform with diverse coding challenges.
-OpenAI for developing ChatGPT, which was used to assist in generating explanations and code.
-Feel free to adjust the content based on your specific project details and requirements.
+## How to Use
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/leetcode-problem-solutions.git
