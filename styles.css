@@ -3,27 +3,27 @@
 
 /* Root variables for light and dark themes */
 :root {
-    --background-color: #E5E5E5;
-    --text-color: #14213D;
-    --header-color: #14213D;
-    --post-border-color: #ddd;
-    --button-background: #14213D;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --header-color: #1a1a1a;
+    --post-border-color: #dddddd;
+    --button-background: #1a1a1a;
     --button-color: #ffffff;
-    --button-hover: #0F1B2B;
-    --link-color: #3498db;
-    --link-hover-color: #2980b9;
+    --button-hover: #333333;
+    --link-color: #0066cc;
+    --link-hover-color: #004499;
 }
 
 [data-theme="dark"] {
-    --background-color: #14213D;
-    --text-color: #E5E5E5;
-    --header-color: #E5E5E5;
-    --post-border-color: #444;
-    --button-background: #E5E5E5;
-    --button-color: #14213D;
-    --button-hover: #CCCCCC;
-    --link-color: #1E90FF;
-    --link-hover-color: #4682B4;
+    --background-color: #1a1a1a;
+    --text-color: #e5e5e5;
+    --header-color: #ffffff;
+    --post-border-color: #444444;
+    --button-background: #e5e5e5;
+    --button-color: #1a1a1a;
+    --button-hover: #cccccc;
+    --link-color: #1e90ff;
+    --link-hover-color: #4682b4;
 }
 
 body {
@@ -105,7 +105,6 @@ header h1 {
     transform: scale(1.1);
 }
 
-/* Specific Icon Styles */
 .icon.linkedin {
     background-color: #0077b5;
 }
@@ -132,7 +131,7 @@ header h1 {
 }
 
 .icon.portfolio {
-    background-color: #4CAF50;
+    background-color: #4caf50;
 }
 
 .icon.email {
@@ -140,7 +139,7 @@ header h1 {
 }
 
 .icon.whatsapp {
-    background-color: #25D366;
+    background-color: #25d366;
 }
 
 .icon.linkedin:hover {
@@ -313,7 +312,7 @@ footer a:hover {
 .styled-hr {
     border: none;
     height: 1px;
-    background: linear-gradient(to right, #E5E5E5, #14213D, #E5E5E5);
+    background: linear-gradient(to right, #e5e5e5, #1a1a1a, #e5e5e5);
     margin: 20px 0;
 }
 
@@ -346,7 +345,7 @@ footer a:hover {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -360,77 +359,23 @@ footer a:hover {
     background-color: #45a049;
 }
 
-
 @media (max-width: 480px) {
     .theme-button, .datetime-button {
         padding: 8px 16px;
-        font-size: 0.9em;
     }
 
-    .intro img {
-        width: 120px;
-        height: 120px;
+    .icon-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    .posts h2 {
-        font-size: 1.4em;
-    }
-
-    .post h3 {
-        font-size: 1.2em;
+    .icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
     }
 }
-
-
-.post-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: var(--header-color);
-}
-
-.post-header .post-title {
-    text-align: left;
-}
-
-.post-header .post-pattern {
-    text-align: left;
-}
-
-.post {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    border-bottom: 1px solid var(--post-border-color);
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-.post h3 {
-    margin: 0;
-    font-size: 1.5em;
-    color: var(--header-color);
-}
-
-.post p {
-    margin: 10px 0 0;
-    color: var(--text-color);
-}
-
-.pattern {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: normal;
-    color: var(--text-color);
-}
-
-/* Additional Styles for Table */
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -441,11 +386,12 @@ th, td {
     border: 1px solid var(--post-border-color);
     padding: 12px;
     text-align: left;
+    color: var(--text-color); /* Updated text color for better visibility */
 }
 
 th {
     background-color: var(--header-color);
-    color: var(--button-color);
+    color: var(--button-color); /* Text color for th is fine */
 }
 
 td a {
@@ -461,6 +407,219 @@ thead th {
     position: sticky;
     top: 0;
     background: var(--header-color);
-    color: var(--button-color);
-    z-index: 1;
+    color: var(--button-color); /* Text color for header cells */
 }
+
+/* Ensure proper contrast for dark theme */
+[data-theme="dark"] th, [data-theme="dark"] td {
+    border-color: var(--post-border-color-dark); /* Use a darker border color for better contrast in dark theme */
+}
+
+/* Define additional color variables for better contrast in dark theme */
+[data-theme="dark"] {
+    --post-border-color-dark: #555; /* Darker border color for dark theme */
+    --text-color: #E5E5E5; /* Text color for dark theme */
+}
+/* Footer Styles */
+/* Dark Footer Theme Colors */
+:root {
+    --footer-background: #1c1c1c; /* Darker background color for footer */
+    --footer-text-color: #e0e0e0; /* Light text color for better contrast */
+    --footer-link-color: #9e9e9e; /* Lighter color for links */
+    --footer-link-hover-color: #ffffff; /* Color for links on hover */
+    --footer-header-color: #ffffff; /* Header text color */
+}
+/* Footer Section */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--footer-background);
+    color: var(--footer-text-color);
+}
+
+footer a {
+    color: var(--footer-link-color);
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--footer-link-hover-color);
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between items */
+}
+
+.footer-container img {
+    width: 30px; /* Slightly smaller icons */
+    height: 30px;
+    margin-top: 10px;
+}
+
+.footer-container .footer-text {
+    margin-bottom: 10px;
+}
+
+.footer-text h2 {
+    font-size: 1.2em;
+    color: var(--footer-header-color);
+    margin: 0;
+}
+
+.styled-hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, var(--footer-background), var(--footer-text-color), var(--footer-background));
+    margin: 20px 0;
+}
+
+
+footer .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+footer .footer-links div {
+    text-align: center;
+}
+
+footer .footer-links a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 5px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+footer .footer-links a:hover {
+    color: #eaeaea;
+    transform: scale(1.05);
+}
+
+footer .footer-links i {
+    font-size: 2em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+footer .footer-credit {
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: #ffffff;
+}
+
+.footer-credit a {
+    color: #50e3c2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-credit a:hover {
+    text-decoration: underline;
+}
+
+/* Dark Footer Theme Colors */
+:root {
+    --footer-background: #1c1c1c; /* Darker background color for footer */
+    --footer-text-color: #e0e0e0; /* Light text color for better contrast */
+    --footer-link-color: #9e9e9e; /* Lighter color for links */
+    --footer-link-hover-color: #ffffff; /* Color for links on hover */
+    --footer-header-color: #ffffff; /* Header text color */
+}
+
+
+
+
+/* Button Styles */
+.theme-button, .datetime-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: var(--button-background);
+    color: var(--button-color);
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 10px;
+}
+
+.theme-button i, .datetime-button i {
+    font-size: 1.2em; /* Adjust icon size */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.button-text {
+    margin: 0; /* Remove default margin */
+}
+
+/* Button Hover Effect */
+.theme-button:hover, .datetime-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+/* Add this to styles.css */
+
+th {
+    position: relative;
+}
+
+#filter-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--link-color);
+    transition: color 0.3s;
+}
+
+#filter-icon:hover {
+    color: var(--link-hover-color);
+}
+/* Toaster message styles */
+.toast {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+}
+[data-theme="dark"] {
+    --background-color: #14213D;
+    --text-color: #E5E5E5;
+    --header-color: #E5E5E5;
+    --post-border-color: #444;
+    --button-background: #E5E5E5;
+    --button-color: #14213D;
+    --button-hover: #CCCCCC;
+    --link-color: #1E90FF;
+    --link-hover-color: #4682B4;
+}
+
+body[data-theme="dark"] {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Add more dark theme styles as needed */
