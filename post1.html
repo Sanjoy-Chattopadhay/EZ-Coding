@@ -62,6 +62,16 @@ public:
 };
                     </code></pre>
                 </div>
+
+                <hr class="my-4">
+
+                <h2>Solution Explanation</h2>
+                <p>The problem requires finding a unique number in an array where every other number appears exactly twice. The solution uses the XOR bitwise operator to find the unique number as follows:</p>
+                <ul>
+                    <li><strong>XOR Operation:</strong> XOR-ing a number with itself results in 0, and XOR-ing with 0 results in the number itself. Hence, when you XOR all numbers in the array, pairs will cancel each other out, leaving only the unique number.</li>
+                    <li><strong>Linear Runtime Complexity:</strong> This approach runs in O(n) time, where n is the number of elements in the array, making it efficient for this problem.</li>
+                    <li><strong>Constant Extra Space:</strong> The solution uses only one extra variable (`exor`), hence the space complexity is O(1).</li>
+                </ul>
             </article>
         </main>
 
@@ -78,6 +88,16 @@ public:
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            }, (err) => {
+                console.error('Error copying code: ', err);
+            });
+        }
+    </script>
 </body>
 
 </html>
