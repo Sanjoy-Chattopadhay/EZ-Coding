@@ -623,3 +623,155 @@ body[data-theme="dark"] {
 }
 
 /* Add more dark theme styles as needed */
+.search-container {
+    margin-bottom: 20px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: var(--button-background);
+    outline: none;
+}
+/* Adjust table column styles */
+table th, table td {
+    text-align: center;
+}
+
+table td a {
+    color: var(--button-background);
+    text-decoration: none;
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+
+/* Existing code */
+
+/* Filtering Styles */
+.filter-container {
+    margin: 20px;
+    text-align: center;
+}
+
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.filter-button.active {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Content Filtering Styles */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content-item {
+    display: none; /* Initially hide all items */
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-item.show {
+    display: block; /* Show items based on filtering */
+}
+
+/* Dark Theme Styles for Filtering */
+.dark-theme .filter-button {
+    background-color: #1f1f1f;
+    border-color: #333;
+}
+
+.dark-theme .filter-button.active {
+    background-color: #333;
+    border-color: #555;
+}
+
+.dark-theme .content-item {
+    background-color: #2e2e2e;
+    border-color: #444;
+}
+
+/* Responsive Design for Filtering */
+@media (max-width: 768px) {
+    .content-item {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .filter-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .content-item {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+/* Existing styles... */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pagination button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.pagination #page-number {
+    line-height: 34px;
+    font-size: 16px;
+}
+
+
