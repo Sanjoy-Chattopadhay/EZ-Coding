@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <title>Number of Even and Odd Bits</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <header class="text-center mb-4">
+            <h1>LeetCode Problem Number: 2595</h1>
+            <div class="button-container mb-3">
+                <button id="theme-toggle" class="btn btn-primary">
+                    <i class="fa-solid fa-circle-half-stroke"></i> Toggle Theme
+                </button>
+                <a href="https://leetcode.com/problems/number-of-even-and-odd-bits/" target="_blank" class="btn btn-success ml-2">
+                    <i class="fa-solid fa-link"></i> Solve on LeetCode
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <article>
+                <h2>Problem Description</h2>
+                <p>You are given a positive integer <code>n</code>.</p>
+                <p>Let <code>even</code> denote the number of even indices in the binary representation of <code>n</code> with value 1.</p>
+                <p>Let <code>odd</code> denote the number of odd indices in the binary representation of <code>n</code> with value 1.</p>
+                <p>Note that bits are indexed from right to left in the binary representation of a number.</p>
+                <p>Return the array <code>[even, odd]</code>.</p>
+                <hr class="my-4">
+
+                <h3>Example:</h3>
+                <pre class="bg-light p-3 rounded">Input: n = 17
+Output: [2, 0]
+Explanation: The binary representation of 17 is 10001.
+The bits at even indices are [1, 0, 0, 1] (count: 2).
+The bits at odd indices are [0, 0] (count: 0).</pre>
+
+                <hr class="my-4">
+
+                <h2>Solution Code</h2>
+                <div class="code-container position-relative">
+                    <button class="btn btn-primary copy-button" onclick="copyCode()">
+                        <i class="fa-solid fa-copy"></i> Copy Code
+                    </button>
+                    <pre id="code-block" class="bg-dark text-light p-3 rounded"><code>
+class Solution {
+public:
+
+    bool evenOrOdd(int n){
+        if(n & 1) return false;
+        return true;
+    }
+    vector<int> evenOddBit(int n) {
+        int odd = 0, even = 0;
+        vector<int> ans;
+        long long int pos = 0;
+        long long int lb;
+        while(n > 0){
+            lb = n & 1;
+            if(lb){
+                if(evenOrOdd(pos)) even++;
+                else odd++;
+            }
+            pos++;
+            n >>= 1;
+        }
+        ans.push_back(even);
+        ans.push_back(odd);
+        return ans;
+    }
+};
+                    </code></pre>
+                </div>
+
+                <hr class="my-4">
+
+                <h2>Solution Explanation</h2>
+                <p>The problem requires counting the number of bits set to 1 at even and odd positions in the binary representation of a given number. The solution follows these steps:</p>
+                <ul>
+                    <li><strong>Iterate Over Bits:</strong> Use bitwise operations to iterate through each bit of the number.</li>
+                    <li><strong>Check Bit Position:</strong> Determine if the bit is at an even or odd position using bitwise operations.</li>
+                    <li><strong>Count Bits:</strong> Count the number of 1s at even and odd positions separately.</li>
+                    <li><strong>Return Result:</strong> Return the counts in an array where the first element is the count of even bits and the second element is the count of odd bits.</li>
+                </ul>
+            </article>
+        </main>
+
+        <footer class="text-center mt-4">
+            <a href="index.html" class="btn btn-info">
+                <i class="fa-solid fa-home"></i> Back to Home
+            </a>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast position-fixed top-0 right-0 m-3 p-2 bg-dark text-light rounded"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            }, (err) => {
+                console.error('Error copying code: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
