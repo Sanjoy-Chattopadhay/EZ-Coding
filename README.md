@@ -2,6 +2,8 @@
 
 Welcome to the LeetCode Problem Solutions repository! This project contains solutions for various LeetCode problems, implemented in C++. The solutions are designed to cover different algorithmic challenges and are categorized based on problem type and difficulty.
 
+live @ https://sanjoy-chattopadhay.github.io/EZ-Coding/
+
 ## Project Structure
 
 - **`index.html`**: The homepage listing all the problems with links to their detailed pages.
