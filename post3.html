@@ -3,46 +3,46 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
-    <title>LeetCode Problem Number: 260</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Problem Number: 268</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/posts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
     <div class="container mt-4">
         <header class="text-center mb-4">
-            <h1>LeetCode Problem Number: 260</h1>
-            <div class="button-container mb-3">
-                <button id="theme-toggle" class="btn btn-primary">
-                    <i class="fa-solid fa-circle-half-stroke"></i> Toggle Theme
-                </button>
-                <a href="https://leetcode.com/problems/single-number-iii/" target="_blank" class="btn btn-success ml-2">
-                    <i class="fa-solid fa-link"></i> Solve on LeetCode
-                </a>
+            <h1>LeetCode Problem Number: 268</h1>
+            <div class="clock-container mb-3">
+                <div id="digital-clock" class="digital-clock">
+                    <!-- Digital clock will be rendered here -->
+                </div>
             </div>
+            <a href="https://leetcode.com/problems/missing-number/" target="_blank" class="btn btn-info mt-3">
+                <i class="fa-solid fa-link"></i> Solve on LeetCode
+            </a>
         </header>
 
         <main>
             <article>
-                <h2>Single Number III</h2>
-                <p>Given an integer array <code>nums</code>, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once. You can return the answer in any order.</p>
-                <p>You must write an algorithm that runs in linear runtime complexity and uses only constant extra space.</p>
+                <h2>Missing Number</h2>
+                <p>Given an array <code>nums</code> containing <code>n</code> distinct numbers in the range <code>[0, n]</code>, return the only number in the range that is missing from the array.</p>
                 <hr class="my-4">
 
                 <h3>Example 1:</h3>
-                <pre class="bg-light p-3 rounded">Input: nums = [1,2,1,3,2,5]
-Output: [3,5]
-Explanation: [5, 3] is also a valid answer.</pre>
+                <pre class="bg-light p-3 rounded">Input: nums = [3,0,1]
+Output: 2</pre>
 
                 <h3>Example 2:</h3>
-                <pre class="bg-light p-3 rounded">Input: nums = [-1,0]
-Output: [-1,0]</pre>
+                <pre class="bg-light p-3 rounded">Input: nums = [0,1]
+Output: 2</pre>
 
                 <h3>Example 3:</h3>
-                <pre class="bg-light p-3 rounded">Input: nums = [0,1]
-Output: [1,0]</pre>
+                <pre class="bg-light p-3 rounded">Input: nums = [9,6,4,2,3,5,7,0,1]
+Output: 8</pre>
 
                 <hr class="my-4">
 
@@ -54,53 +54,11 @@ Output: [1,0]</pre>
                     <pre id="code-block" class="bg-dark text-light p-3 rounded"><code>
 class Solution {
 public:
-    int getBit(int n, int pos) {
-        int mask = 1 << pos;
-        if (n & mask) return 1;
-        else return 0;
-    }
-
-    int getFirstOneInLSB(int n) {
-        //n = 1010
-        int pos = 0;
-        while (n) {
-            if (n & 1) return pos;
-            else {
-                pos++;
-                n >>= 1;
-            }
-        }
-        return pos;
-    }
-
-    vector<int> singleNumber(vector<int>& nums) {
+    int missingNumber(vector<int>& nums) {
         int n = nums.size();
-        int exor = 0;
-        for (int i = 0; i < n; i++) {
-            exor ^= nums[i];
-        }
-        vector<int> set1, set2, ans;
-        int pos = getFirstOneInLSB(exor);
-
-        for (int i = 0; i < n; i++) {
-            if (getBit(nums[i], pos)) set1.push_back(nums[i]);
-            else set2.push_back(nums[i]);
-        }
-        int ele1 = 0;
-        int ele2 = 0;
-
-        for (int i = 0; i < set1.size(); i++) {
-            ele1 ^= set1[i];
-        }
-
-        for (int i = 0; i < set2.size(); i++) {
-            ele2 ^= set2[i];
-        }
-
-        ans.push_back(ele1);
-        ans.push_back(ele2);
-
-        return ans;
+        int total_sum = n * (n + 1) / 2;
+        int array_sum = accumulate(nums.begin(), nums.end(), 0);
+        return total_sum - array_sum;
     }
 };
                     </code></pre>
@@ -109,30 +67,26 @@ public:
                 <hr class="my-4">
 
                 <h2>Solution Explanation</h2>
-                <p>The problem requires finding two unique numbers in an array where all other numbers appear exactly twice. The solution uses bit manipulation and the XOR operation as follows:</p>
+                <p>The problem requires finding the missing number in an array of distinct numbers ranging from 0 to n. The solution uses the sum formula as follows:</p>
                 <ul>
-                    <li><strong>Bitwise XOR Operation:</strong> XOR-ing all numbers results in a value that is the XOR of the two unique numbers. This is because all numbers appearing twice cancel out each other.</li>
-                    <li><strong>Finding the First Set Bit:</strong> Identify the first set bit in the XOR result. This bit differentiates the two unique numbers because this bit differs between them.</li>
-                    <li><strong>Partitioning the Array:</strong> Partition the array into two groups based on whether the identified bit is set or not. Each group contains one of the unique numbers.</li>
-                    <li><strong>Finding Unique Numbers:</strong> XOR all numbers in each group to isolate the two unique numbers.</li>
-                    <li><strong>Linear Runtime Complexity:</strong> The solution runs in O(n) time and uses only a constant amount of extra space, making it efficient and suitable for large inputs.</li>
+                    <li><strong>Sum Formula:</strong> The sum of the first n natural numbers is given by the formula <code>n * (n + 1) / 2</code>.</li>
+                    <li><strong>Array Sum:</strong> Calculate the sum of the elements in the array.</li>
+                    <li><strong>Missing Number:</strong> Subtract the sum of the array from the total sum to get the missing number.</li>
                 </ul>
             </article>
         </main>
 
         <footer class="text-center mt-4">
-            <a href="index.html" class="btn btn-info">
+            <a href="../bit-manipulation.html" class="btn btn-info">
                 <i class="fa-solid fa-home"></i> Back to Home
             </a>
         </footer>
     </div>
 
-    <div id="toast" class="toast position-fixed top-0 right-0 m-3 p-2 bg-dark text-light rounded"></div>
-    <div id="toast" class="toast"></div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="clock.js"></script>
     <script>
         function copyCode() {
             const code = document.getElementById('code-block').innerText;
