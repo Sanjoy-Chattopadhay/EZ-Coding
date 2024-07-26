@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <title>LeetCode Problem Number: 673</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/posts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container mt-4">
+        <header class="text-center mb-4">
+            <h1>LeetCode Problem Number: 673</h1>
+            <h2>Binary Number with Alternating Bits</h2>
+            <div class="clock-container mb-3">
+                <div id="digital-clock" class="digital-clock">
+                    <!-- Digital clock will be rendered here -->
+                </div>
+            </div>
+            <a href="https://leetcode.com/problems/binary-number-with-alternating-bits/" target="_blank" class="btn btn-info mt-3">
+                <i class="fa-solid fa-link"></i> Solve on LeetCode
+            </a>
+        </header>
+
+        <main>
+            <article>
+                <h2>Problem Description</h2>
+                <p>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</p>
+                <hr class="my-4">
+
+                <h3>Example 1:</h3>
+                <pre class="bg-light p-3 rounded">Input: n = 5
+Output: true
+Explanation: The binary representation of 5 is: 101</pre>
+
+                <h3>Example 2:</h3>
+                <pre class="bg-light p-3 rounded">Input: n = 7
+Output: false
+Explanation: The binary representation of 7 is: 111.</pre>
+
+                <h3>Example 3:</h3>
+                <pre class="bg-light p-3 rounded">Input: n = 11
+Output: false
+Explanation: The binary representation of 11 is: 1011.</pre>
+
+                <hr class="my-4">
+
+                <h2>Solution Code</h2>
+                <div class="code-container position-relative">
+                    <button class="btn btn-primary copy-button" onclick="copyCode()">
+                        <i class="fa-solid fa-copy"></i> Copy Code
+                    </button>
+                    <pre id="code-block" class="bg-dark text-light p-3 rounded"><code>
+class Solution {
+public:
+    bool hasAlternatingBits(int n) {
+        int org = n;
+        vector<int> arr;
+        while(org){
+            arr.push_back(org & 1);
+            org >>= 1;
+        }
+        bool flag = true;
+        for(int i = 1 ; i < arr.size() ; i++){
+            if((arr[i] ^ arr[i-1]) == 0) flag = false;
+        }
+        return flag;
+        
+    }
+};
+                    </code></pre>
+                </div>
+
+                <hr class="my-4">
+
+                <h2>Solution Explanation</h2>
+                <p>The problem involves determining if a number's binary representation has alternating bits. The solution follows these steps:</p>
+                <ul>
+                    <li><strong>Extract Bits:</strong> Convert the integer to its binary representation by extracting each bit.</li>
+                    <li><strong>Check Alternation:</strong> Verify if each bit alternates from the previous bit. If any adjacent bits are the same, return false.</li>
+                    <li><strong>Return Result:</strong> If all bits alternate correctly, return true; otherwise, return false.</li>
+                </ul>
+            </article>
+        </main>
+
+        <footer class="text-center mt-4">
+            <a href="../bit-manipulation.html" class="btn btn-info">
+                <i class="fa-solid fa-home"></i> Back to Home
+            </a>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="clock.js"></script>
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            }, (err) => {
+                console.error('Error copying code: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>

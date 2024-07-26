@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Problem Number: 268</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/posts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container mt-4">
+        <header class="text-center mb-4">
+            <h1>LeetCode Problem Number: 268</h1>
+            <div class="clock-container mb-3">
+                <div id="digital-clock" class="digital-clock">
+                    <!-- Digital clock will be rendered here -->
+                </div>
+            </div>
+            <a href="https://leetcode.com/problems/missing-number/" target="_blank" class="btn btn-info mt-3">
+                <i class="fa-solid fa-link"></i> Solve on LeetCode
+            </a>
+        </header>
+
+        <main>
+            <article>
+                <h2>Missing Number</h2>
+                <p>Given an array <code>nums</code> containing <code>n</code> distinct numbers in the range <code>[0, n]</code>, return the only number in the range that is missing from the array.</p>
+                <hr class="my-4">
+
+                <h3>Example 1:</h3>
+                <pre class="bg-light p-3 rounded">Input: nums = [3,0,1]
+Output: 2</pre>
+
+                <h3>Example 2:</h3>
+                <pre class="bg-light p-3 rounded">Input: nums = [0,1]
+Output: 2</pre>
+
+                <h3>Example 3:</h3>
+                <pre class="bg-light p-3 rounded">Input: nums = [9,6,4,2,3,5,7,0,1]
+Output: 8</pre>
+
+                <hr class="my-4">
+
+                <h2>Solution Code</h2>
+                <div class="code-container position-relative">
+                    <button class="btn btn-primary copy-button" onclick="copyCode()">
+                        <i class="fa-solid fa-copy"></i> Copy Code
+                    </button>
+                    <pre id="code-block" class="bg-dark text-light p-3 rounded"><code>
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int total_sum = n * (n + 1) / 2;
+        int array_sum = accumulate(nums.begin(), nums.end(), 0);
+        return total_sum - array_sum;
+    }
+};
+                    </code></pre>
+                </div>
+
+                <hr class="my-4">
+
+                <h2>Solution Explanation</h2>
+                <p>The problem requires finding the missing number in an array of distinct numbers ranging from 0 to n. The solution uses the sum formula as follows:</p>
+                <ul>
+                    <li><strong>Sum Formula:</strong> The sum of the first n natural numbers is given by the formula <code>n * (n + 1) / 2</code>.</li>
+                    <li><strong>Array Sum:</strong> Calculate the sum of the elements in the array.</li>
+                    <li><strong>Missing Number:</strong> Subtract the sum of the array from the total sum to get the missing number.</li>
+                </ul>
+            </article>
+        </main>
+
+        <footer class="text-center mt-4">
+            <a href="../bit-manipulation.html" class="btn btn-info">
+                <i class="fa-solid fa-home"></i> Back to Home
+            </a>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="clock.js"></script>
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            }, (err) => {
+                console.error('Error copying code: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>

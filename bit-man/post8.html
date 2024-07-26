@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <title>LeetCode Problem Number: 2917</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/posts.css"> <!-- Adjusted path to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container mt-4">
+        <header class="text-center mb-4">
+            <h1>LeetCode Problem Number: 2917</h1>
+            <h2>Find the K-or of an Array</h2>
+            <div class="clock-container mb-3">
+                <div id="digital-clock" class="digital-clock">
+                    <!-- Digital clock will be rendered here -->
+                </div>
+            </div>
+            <div class="button-container mb-3">
+                <a href="https://leetcode.com/problems/k-or-operation/" target="_blank" class="btn btn-info">
+                    <i class="fa-solid fa-link"></i> Solve on LeetCode
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <article>
+                <h2>Problem Description</h2>
+                <p>You are given an integer array <code>nums</code>, and an integer <code>k</code>. Let's introduce K-or operation by extending the standard bitwise OR. In K-or, a bit position in the result is set to 1 if at least <code>k</code> numbers in <code>nums</code> have a 1 in that position.</p>
+                <p>Return the K-or of <code>nums</code>.</p>
+                <hr class="my-4">
+
+                <h3>Example 1:</h3>
+                <pre class="bg-light p-3 rounded">Input: nums = [7,12,9,8,9,15], k = 4
+Output: 9
+Explanation:
+Represent numbers in binary:
+Number	Bit 3	Bit 2	Bit 1	Bit 0
+7	    0	    1	    1	    1
+12	    1	    1	    0	    0
+9	    1	    0	    0	    1
+8	    1	    0	    0	    0
+9	    1	    0	    0	    1
+15	    1	    1	    1	    1
+Result = 9	1	0	0	1
+Bit 0 is set in 7, 9, 9, and 15. Bit 3 is set in 12, 9, 8, 9, and 15.
+Only bits 0 and 3 qualify. The result is (1001)2 = 9.</pre>
+
+                <h3>Example 2:</h3>
+                <pre class="bg-light p-3 rounded">Input: nums = [2,12,1,11,4,5], k = 6
+Output: 0
+Explanation:
+No bit appears as 1 in all six array numbers, as required for K-or with k = 6. Thus, the result is 0.</pre>
+
+                <h3>Example 3:</h3>
+                <pre class="bg-light p-3 rounded">Input: nums = [10,8,5,9,11,6,8], k = 1
+Output: 15
+Explanation:
+Since k == 1, the 1-or of the array is equal to the bitwise OR of all its elements. Hence, the answer is 10 OR 8 OR 5 OR 9 OR 11 OR 6 OR 8 = 15.</pre>
+
+                <hr class="my-4">
+
+                <h2>Solution Code</h2>
+                <div class="code-container position-relative">
+                    <button class="btn btn-primary copy-button" onclick="copyCode()">
+                        <i class="fa-solid fa-copy"></i> Copy Code
+                    </button>
+                    <pre id="code-block" class="bg-dark text-light p-3 rounded"><code>
+class Solution {
+public:
+    int findKOr(vector<int>& nums, int k) {
+        int answer = 0;
+         
+        for (int i = 0; i < 32; i++) {
+            int c = 0;
+            for (int num : nums) {
+                if ((num & (1 << i)) != 0) {
+                    c++;
+                }
+            }
+            if (c >= k) {
+                answer |= (1 << i);
+            }
+        }
+        return answer;
+    }
+};
+                    </code></pre>
+                </div>
+
+                <hr class="my-4">
+
+                <h2>Solution Explanation</h2>
+                <p>The problem involves calculating the K-or of an array where a bit position in the result is set to 1 if at least <code>k</code> numbers in the array have a 1 in that position. The solution follows these steps:</p>
+                <ul>
+                    <li><strong>Iterate Over Bit Positions:</strong> Check each bit position from 0 to 31.</li>
+                    <li><strong>Count Bits:</strong> Count how many numbers have a 1 at each bit position.</li>
+                    <li><strong>Check Condition:</strong> If the count of 1s at a bit position is greater than or equal to <code>k</code>, set that bit in the result.</li>
+                    <li><strong>Compute Result:</strong> Accumulate the result by setting the appropriate bits based on the condition.</li>
+                </ul>
+            </article>
+        </main>
+
+        <footer class="text-center mt-4">
+            <a href="../bit-manipulation.html" class="btn btn-info">
+                <i class="fa-solid fa-home"></i> Back to Home
+            </a>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast position-fixed top-0 right-0 m-3 p-2 bg-dark text-light rounded"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="clock.js"></script> <!-- Adjusted path to your JavaScript file -->
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                document.getElementById('toast').innerText = 'Code copied to clipboard!';
+                document.getElementById('toast').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('toast').classList.remove('show');
+                }, 2000);
+            }, (err) => {
+                console.error('Error copying code: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
