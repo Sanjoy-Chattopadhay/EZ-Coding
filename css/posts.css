@@ -1,0 +1,41 @@
+/* General styles for body and header */
+body {
+    background-color: #1e1e1e; /* Dark background color */
+    color: #ffffff; /* Light text color */
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.clock-container {
+    margin-bottom: 20px;
+}
+
+.digital-clock {
+    font-family: 'Digital', monospace;
+    font-size: 3rem; /* Larger font size for better visibility */
+    color: #6f42c1; /* Purple color for the clock */
+    background: #333; /* Dark background for the clock */
+    border: 2px solid #6f42c1;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.btn-info {
+    background-color: #6f42c1; /* Purple button color */
+    border-color: #6f42c1;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-info:hover {
+    background-color: #5a2b9e; /* Darker purple for hover effect */
+    border-color: #5a2b9e;
+}
